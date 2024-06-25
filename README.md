@@ -1,6 +1,6 @@
-# Client Register Blade 💼
+# Meu Projeto Laravel 💼
 
-Este é um projeto de registro de clientes desenvolvido com o poderoso framework PHP Laravel, utilizando o Laravel Sail para um ambiente de desenvolvimento simplificado com Docker e estilizado com o elegante Tailwind CSS.
+Este é um projeto desenvolvido com o framework PHP Laravel, utilizando o Laravel Sail para um ambiente de desenvolvimento simplificado com Docker. Este guia assume que você já possui o Docker e o Docker Compose instalados em sua máquina.
 
 ## 🚀 Pré-requisitos
 
@@ -8,82 +8,87 @@ Antes de começar, você precisa ter o seguinte software instalado na sua máqui
 
 - Docker: 🐳 Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
 - Composer: 🎼 Tenha o Composer instalado globalmente.
-- WSL ou Linux
 
 ## 🛠️ Instalação
 
-Siga estas etapas para configurar o projeto localmente:
+### Clone Repositório
 
-1. Clone o repositório:
+Primeiro, clone o repositório para o seu ambiente local:
 
-bash git clone https://github.com/Tiagokochem/Client-Register-Blade.git
-
-
-2. Acesse o diretório do projeto:
-
-bash cd Client-Register-Blade/exemple-app
+bash git clone -b main https://github.com/Tiagokochem/Client-Register-Blade 
 
 
-3. Inicie os containers Docker:
+### Crie o Arquivo `.env`
 
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v "$(pwd):/var/www/html" \
-    -w /var/www/html \
-    laravelsail/php83-composer:latest \
-    composer install --ignore-platform-reqs
+Copie o arquivo `.env.example` para criar seu próprio arquivo `.env`:
+
+bash cp.env.example.env
 
 
-4. Gere a chave da aplicação:
+### Suba os Containers do Projeto
 
-bash ./vendor/bin/sail artisan key:generate
+Inicie os containers Docker necessários para o projeto:
 
-
-5. Execute as migrações do banco de dados:
-
-bash ./vendor/bin/sail artisan migrate
+bash docker compose up -d
 
 
-6. Execute o Seeder para popular o banco de dados com dados de exemplo:
+### Acesse o Container App
 
-bash ./vendor/bin/sail artisan db:seed
+Para trabalhar dentro do container do aplicativo, execute:
+
+bash docker compose exec app bash
 
 
-7. Compile os assets do Tailwind CSS (se estiver usando):
+### Instale as Dependências do Projeto
 
-bash ./vendor/bin/sail npm install ./vendor/bin/sail npm run dev
+Dentro do container, instale as dependências do projeto:
+
+bash composer install composer update
+
+
+### Gere a Key do Projeto Laravel
+
+Gere uma nova chave para o projeto Laravel:
+
+bash php artisan key:generate
+
+
+### Rodar as Migrations
+
+Execute as migrations para criar as tabelas necessárias no banco de dados:
+
+bash php artisan migrate
+
+
+### Seed o Banco de Dados
+
+Execute os seeders para popular o banco de dados com dados de exemplo:
+
+bash php artisan db:seed
+
+
+### Acesse o Projeto
+
+Acesse o projeto em `http://localhost`. 
+
+### Compilar Assets
+
+Se o projeto utilizar Tailwind CSS ou outras bibliotecas de frontend, compile os assets:
+
+bash npm run dev
 
 
 ## 🧑‍💻 Utilização
 
-Após a instalação, você pode acessar a aplicação abrindo o seu navegador e acessando `http://localhost`.
-
-Com esta aplicação, você pode gerenciar seus clientes facilmente e intuitivamente, criando, editando e excluindo registros de clientes conforme necessário.
-
-## 📂 Estrutura do Projeto
-
-O projeto segue uma estrutura padrão do Laravel, incluindo:
-
-- `app`: Contém a lógica principal da aplicação (modelos, controladores, etc.).
-- `database`: Armazena as migrações e seeds do banco de dados.
-- `resources`: Contém as views, assets e arquivos de linguagem.
-- `routes`: Define as rotas da aplicação.
-- `docker-compose.yml`: Arquivo de configuração do Laravel Sail.
-
-## 💻 Tecnologias Utilizadas
-
-- Laravel: Framework PHP para desenvolvimento web.
-- Laravel Sail: Ferramenta para desenvolvimento local com Docker.
-- Tailwind CSS: Framework CSS para estilização rápida e responsiva.
-- MySQL: Sistema de gerenciamento de banco de dados.
+Após seguir esses passos, você terá o projeto pronto para uso. Explore as funcionalidades disponíveis para aproveitar ao máximo o seu aplicativo.
 
 ## 🙌 Contribuição
 
-Contribuições são bem-vindas Se você encontrar algum problema ou tiver alguma sugestão, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contribuições são bem-vindas Sinta-se à vontade para abrir uma issue ou enviar um pull request com suas sugestões ou correções.
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
 ![Screenshot_1](https://github.com/Tiagokochem/Client-Register-Blade/assets/57450432/a371a7e5-aa67-4b05-b307-c7b83a3c883d)
 
