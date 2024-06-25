@@ -50,7 +50,7 @@ Dentro do container, instale as dependências do projeto:
 
 Se o projeto utilizar Tailwind CSS ou outras bibliotecas de frontend, compile os assets:
 
-bash npm run dev
+./vendor/bin/sail npm run dev
 
 
 ### Rodar as Migrations
