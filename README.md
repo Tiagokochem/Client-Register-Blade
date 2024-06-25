@@ -84,3 +84,8 @@ Contribuições são bem-vindas Se você encontrar algum problema ou tiver algum
 ## 📄 Licença
 
 Este projeto está licenciado sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
+
+![Screenshot_1](https://github.com/Tiagokochem/Client-Register-Blade/assets/57450432/a371a7e5-aa67-4b05-b307-c7b83a3c883d)
+
+![Screenshot_2](https://github.com/Tiagokochem/Client-Register-Blade/assets/57450432/0a04fa2e-3999-48d3-9695-61d00686b92f)
+
