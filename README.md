@@ -26,30 +26,30 @@ bash cd Client-Register-Blade/exemple-app
 
 3. Inicie os containers Docker:
 
-bash docker-compose up -d
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
 
 
-4. Instale as dependências do projeto:
-
-bash ./vendor/bin/sail composer install
-
-
-5. Gere a chave da aplicação:
+4. Gere a chave da aplicação:
 
 bash ./vendor/bin/sail artisan key:generate
 
 
-6. Execute as migrações do banco de dados:
+5. Execute as migrações do banco de dados:
 
 bash ./vendor/bin/sail artisan migrate
 
 
-7. Execute o Seeder para popular o banco de dados com dados de exemplo:
+6. Execute o Seeder para popular o banco de dados com dados de exemplo:
 
 bash ./vendor/bin/sail artisan db:seed
 
 
-8. Compile os assets do Tailwind CSS (se estiver usando):
+7. Compile os assets do Tailwind CSS (se estiver usando):
 
 bash ./vendor/bin/sail npm install ./vendor/bin/sail npm run dev
 
