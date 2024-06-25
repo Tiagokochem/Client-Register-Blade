@@ -27,55 +27,51 @@ bash cp.env.example.env
 
 ### Suba os Containers do Projeto
 
-Inicie os containers Docker necessários para o projeto:
+Inicie os containers Docker necessários para o projeto com o comando:
 
-bash docker compose up -d
+docker run --rm \
+    -v $(pwd):/opt \
+    -w /opt laravelsail/php82-composer:latest \
+    bash -c "composer require --dev laravel/sail && composer install && php artisan sail:install"
 
 
-### Acesse o Container App
+### Suba os containers
 
-Para trabalhar dentro do container do aplicativo, execute:
-
-bash docker compose exec app bash
+./vendor/bin/sail up -d
 
 
 ### Instale as Dependências do Projeto
 
 Dentro do container, instale as dependências do projeto:
 
-bash composer install composer update
-
-
-### Gere a Key do Projeto Laravel
-
-Gere uma nova chave para o projeto Laravel:
-
-bash php artisan key:generate
-
-
-### Rodar as Migrations
-
-Execute as migrations para criar as tabelas necessárias no banco de dados:
-
-bash php artisan migrate
-
-
-### Seed o Banco de Dados
-
-Execute os seeders para popular o banco de dados com dados de exemplo:
-
-bash php artisan db:seed
-
-
-### Acesse o Projeto
-
-Acesse o projeto em `http://localhost`. 
+./vendor/bin/sail npm install
 
 ### Compilar Assets
 
 Se o projeto utilizar Tailwind CSS ou outras bibliotecas de frontend, compile os assets:
 
 bash npm run dev
+
+
+### Rodar as Migrations
+
+Execute as migrations para criar as tabelas necessárias no banco de dados:
+
+./vendor/bin/sail artisan migrate
+
+
+### Seed o Banco de Dados
+
+Execute os seeders para popular o banco de dados com dados de exemplo:
+
+./vendor/bin/sail artisan db:seed
+
+
+### Acesse o Projeto
+
+Acesse o projeto em `http://localhost`. 
+
+
 
 
 ## 🧑‍💻 Utilização
