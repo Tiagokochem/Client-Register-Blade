@@ -22,7 +22,7 @@ bash git clone -b main https://github.com/Tiagokochem/Client-Register-Blade
 
 Copie o arquivo `.env.example` para criar seu próprio arquivo `.env`:
 
-bash cp.env.example.env
+bash cp .env.example .env
 
 
 ### Suba os Containers do Projeto
